@@ -86,7 +86,7 @@
   <body class="text-center">
     
     <form class="form-signin" method="post" action="<?= base_url('auth/login_aksi'); ?>">
-    <img class="mb-4" src="<?= base_url('assets/img/logo-medika-plus.png'); ?>" alt="" width="100" height="100">
+    <img class="mb-4" src="<?= base_url('assets/img/logo-medika-plus-removebg-preview.png'); ?>" alt="" width="100" height="100">
     <h1 class="h3 mb-3 font-weight-normal">Silahkan Login</h1>
     <div class="alert alert-danger">
         <?= validation_errors(); ?>
