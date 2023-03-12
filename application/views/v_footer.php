@@ -1,3 +1,10 @@
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <span class="text-muted">Copyright &copy; 2023 - Dede Iryawan.</span>
+    </div>
+  </footer>
+
+        
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
