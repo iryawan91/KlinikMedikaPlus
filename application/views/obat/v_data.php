@@ -19,8 +19,8 @@
                     <th scope="row"><?= $no; ?></th>
                     <td><?= $r['namaObat']; ?></td>
                     <td>
-                        <a href="<?= base_url('obat/edit/'.$r['idObat']); ?>" class="btn btn-warning btn-sm">Edit</a>
-                        <a href="<?= base_url('obat/hapus/'.$r['idObat']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus data?')">Hapus</a>
+                        <a href="<?= base_url('dokter/edit/'.$r['idObat']); ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="<?= base_url('dokter/hapus/'.$r['idObat']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin menghapus data?')">Hapus</a>
                     </td>
                     </tr>
                     <?php $no++; } ?>
