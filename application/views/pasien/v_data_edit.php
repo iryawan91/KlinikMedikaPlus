@@ -4,24 +4,30 @@
         <div class="card text-white  mx-3">
             <div class="card-header bg-primary ">
                 <?= $title; ?>
-                <a href="<?= base_url('users'); ?>" class="btn btn-warning btn-sm float-right"> Kembali</a>
+                <a href="<?= base_url('pasien'); ?>" class="btn btn-warning btn-sm float-right"> Kembali</a>
             </div>
             <div class="card-body text-dark">
-                <form method="post" action="<?= base_url('users/update'); ?>" >
-                <input type="hidden"  name="id" value="<?= $r['id']; ?>">    
+                <form method="post" action="<?= base_url('pasien/update'); ?>" >
+                <input type="hidden"  name="idPasien" value="<?= $r['idPasien']; ?>">    
                     <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" class="form-control" name="username" value="<?= $r['username']; ?>" required>
+                        <label>Nama Pasien</label>
+                        <input type="text" class="form-control" name="namaPasien" value="<?= $r['namaPasien']; ?>" required>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label>Jenis Kelamin</label>
+                        <select name="jenisKelamin" class="form-control">
+                            <option value="<?= $r['jenisKelamin']; ?>"><?= $r['jenisKelamin']; ?></option>
+                            <option value="Pria">Pria</option>
+                            <option value="Wanita">Wanita</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Nama Lengkap</label>
-                        <input type="text" class="form-control" name="nama" value="<?= $r['nama']; ?>" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Kosongkan jika tidak merubah password">
+                        <label>Umur Pasien</label>
+                        <input type="text" class="form-control" name="umurPasien" value="<?= $r['umurPasien']; ?>" required>
                     </div>
 
                     
