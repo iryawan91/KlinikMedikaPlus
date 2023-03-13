@@ -12,6 +12,7 @@ class Kunjungan extends CI_Controller {
         $this->load->model('M_kunjungan');
         $this->load->model('M_pasien');
         $this->load->model('M_dokter');
+        $this->load->model('M_obat');
     }
 
 	public function index()
@@ -102,4 +103,69 @@ class Kunjungan extends CI_Controller {
 
         redirect('kunjungan');
     }
+
+    //Fungsi merekam kunjungan
+    function rekam($id){
+        $data['title']='Rekam Medis Pasien';
+
+        //tampil data rekam medis
+        $data['d'] = $this->M_kunjungan->tampil_rekam($id)->row_array();
+
+        //tampil riwayat kunjungan
+        $q=$this->db->query("SELECT idPasien from berobat WHERE idBerobat='$id'")->row_array();
+        $idPasien=$q['idPasien'];
+        $data['riwayat']=$this->M_kunjungan->tampil_riwayat($idPasien)->result_array();
+
+        //tampil data obat di combo
+        $data['obat']=$this->M_obat->tampil_data()->result_array();
+
+        //menampilkan resep obat
+        $data['resep']=$this->M_kunjungan->tampil_resep($id)->result_array();
+
+        $this->load->view('v_header', $data);
+		$this->load->view('kunjungan/v_rekam_medis', $data);
+        $this->load->view('v_footer');
+
+    }
+
+
+    function insert_rekam(){
+        $idBerobat=$this->input->post('id');
+        $keluhan=$this->input->post('keluhan');
+        $diagnosa=$this->input->post('diagnosa');
+        $penatalaksana=$this->input->post('penatalaksana');
+
+        $data=array(
+            'keluhanPasien'=>$keluhan,
+            'hasilDiagnosa'=>$diagnosa,
+            'penataLaksana'=>$penatalaksana
+        );
+
+        $where=array('idBerobat'=>$idBerobat);
+
+        $this->M_kunjungan->update_data($data,$where);
+
+        redirect('kunjungan/rekam/'.$idBerobat);
+    }
+
+    function insert_resep(){
+        $idBerobat=$this->input->post('id');
+        $obat=$this->input->post('obat');
+
+        $data=array(
+            'idBerobat'=>$idBerobat,
+            'idObat'=>$obat
+        );
+
+        $this->M_kunjungan->insert_resep($data);
+
+        redirect('kunjungan/rekam/'.$idBerobat);
+    }
+
+    function hapus_resep($id, $idBerobat){
+        $where=array('idResep'=>$id);
+        $this->M_kunjungan->hapus_resep($where);
+        redirect('kunjungan/rekam/'.$idBerobat);
+    }
 }
+

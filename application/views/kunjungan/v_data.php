@@ -25,7 +25,7 @@
                     <td><?= $r['namaPasien']; ?></td>
                     <td><?= $r['umurPasien']; ?></td>
                     <td><?= $r['namaDokter']; ?></td>
-                    <td><a href="<?= base_url('kunjungan/rekam'.$r['idBerobat']); ?>" class="btn btn-primary btn-sm">Rekam</a>
+                    <td><a href="<?= base_url('kunjungan/rekam/'.$r['idBerobat']); ?>" class="btn btn-primary btn-sm">Rekam</a>
                         </td> 
                     <td>
                         <a href="<?= base_url('kunjungan/edit/'.$r['idBerobat']); ?>" class="btn btn-warning btn-sm">Edit</a>
